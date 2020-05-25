@@ -2,6 +2,8 @@ import os
 from notion.client import NotionClient
 from notion.block import CollectionViewBlock
 
+EXPENSE_TABLE_TITLE = "Test Expenses Databse"
+
 
 def step_three():
     token = os.environ.get('DO_NOT_COMMIT_NOTION_TOKEN')
@@ -12,12 +14,20 @@ def step_three():
     client = NotionClient(token_v2=token)
     parent_page = client.get_block(os.environ.get('NOTION_PAGE_URL'))
 
+    for block in parent_page.children:
+        try:
+            if block.title == EXPENSE_TABLE_TITLE:
+                print('Expenses Table already exists!')
+                return
+        except:
+            continue
+
     cvb = parent_page.children.add_new(CollectionViewBlock)
     cvb.collection = client.get_collection(
         client.create_record("collection", parent=cvb,
                              schema=get_collection_schema())
     )
-    cvb.title = "Test Expenses Databse"
+    cvb.title = EXPENSE_TABLE_TITLE
     view = cvb.views.add_new(view_type="table")
     print('Success! Go back to the README for the last step')
 
