@@ -9,7 +9,7 @@ chardet==3.0.4
 click==7.1.2
 commonmark==0.9.1
 dictdiffer==0.8.1
-Django==3.0.6
+Django==3.1.12
 Flask==1.1.1
 google-api-core==1.17.0
 google-api-python-client==1.8.3
