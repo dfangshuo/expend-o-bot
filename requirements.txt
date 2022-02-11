@@ -25,7 +25,7 @@ Jinja2==2.11.2
 MarkupSafe==1.1.1
 notion==0.0.25
 oauthlib==3.1.0
-protobuf==3.12.1
+protobuf==3.15.0
 pyasn1==0.4.8
 pyasn1-modules==0.2.8
 pycodestyle==2.6.0
